@@ -1,0 +1,566 @@
+# latexindent can be called to act on a file without using the file's extension,
+# e.g, simply
+#       latexindent myfile
+# in which case the choice of file extension is chosen
+# according to the choices made in fileExtensionPreference
+# Other file extensions can be added.
+fileExtensionPreference:
+  .tex: 1
+  .sty: 2
+  .cls: 3
+  .bib: 4
+  .def: 5
+  .cfg: 6
+
+defaultIndent: "\t"
+
+noAdditionalIndent:
+  teachersection: 1
+  teacherintroduction: 1
+  longteacher: 1
+  task: 1
+
+# If maxNumberOfBackUps is set to 0 (or less) then infinitely
+# many backups are possible, unless onlyOneBackUp is switched on
+maxNumberOfBackUps: 2
+
+#  verbatim environments specified
+#  in this field will not be changed at all!
+verbatimEnvironments:
+  verbatim: 1
+  lstlisting: 1
+  minted: 1
+  latexcode: 1
+  cppcode: 1
+  portugolcode: 1
+  nameAsRegex:
+    name: '\w+code\*?'
+    lookForThis: 1
+
+#  verbatim commands such as \verb! body !, \lstinline$something else$
+verbatimCommands:
+  verb: 1
+  lstinline: 1
+  cppinline: 1
+  latexinline: 1
+  portugolinline: 1
+
+# indent preamble
+indentPreamble: 1
+
+# assume no preamble in cls, sty, by default
+lookForPreamble:
+  .tex: 1
+  .sty: 0
+  .cls: 0
+  .bib: 0
+  .def: 0
+  .cfg: 0
+
+# some preambles can contain \begin and \end statements
+# that are not in their 'standard environment block', for example,
+# consider the following key = values:
+#    preheadhook={\begin{mdframed}[style=myframedstyle]},
+#    postfoothook=\end{mdframed},
+preambleCommandsBeforeEnvironments: 1
+
+# name of code blocks that should have their body aligned at ampersand delimiters
+lookForAlignDelims:
+  tabular:
+    multiColumnGrouping: 1
+  longtable:
+    multiColumnGrouping: 1
+  path:
+    delimiterRegEx: '(edge|node\h*\{[0-9,A-Z]+\})'
+
+# maximumIndentation: "\t\t\t\t\t"
+
+# if you want the script to look for \item commands
+# and format it, as follows (for example),
+#       \begin{itemize}
+#           \item content here
+#                 next line is indented
+#                 next line is indented
+#           \item another item
+#       \end{itemize}
+# then populate indentAfterItems. See also itemNames
+indentAfterItems:
+  itemize: 1
+  enumerate: 1
+  description: 1
+  list: 1
+  exercises: 1
+  tasks: 1
+
+# if you want to use other names for your items (for example, \part)
+# then populate them here; note that you can trick latexindent.pl
+# into indenting all kinds of commands (within environments specified in
+# indentAfterItems) using this technique.
+itemNames:
+  item: 1
+  myitem: 1
+  task: 1
+
+# specialBeginEnd is, by default, mathmode focus, although
+# there's no restrictions
+specialBeginEnd:
+  displayMath:
+    begin: '\\\['
+    end: '\\\]'
+    lookForThis: 1
+  inlineMath:
+    begin: '(?<!\$)(?<!\\)\$(?!\$)'
+    end: '(?<!\\)\$(?!\$)'
+    lookForThis: 0
+  displayMathTeX:
+    begin: '\$\$'
+    end: '\$\$'
+    lookForThis: 0
+  # leftRightSquare:
+  #     begin: '\\left\['
+  #     end: '\\right\]'
+  #     lookForThis: 1
+  # leftRightParenthesis:
+  #     begin: '\\left\('
+  #     end: '\\right\)'
+  #     lookForThis: 1
+  # leftRightBrackets:
+  #     begin: '\\left\{'
+  #     end: '\\right\}'
+  #     lookForThis: 1
+  MakeAtLetter:
+    begin: '\\makeatletter'
+    end: '\\makeatother'
+  path:
+    begin: '\\path'
+    end: ";"
+    lookForThis: 1
+  specialBeforeCommand: 1
+
+indentRules:
+  draw:
+    body: "\t"
+
+commandCodeBlocks:
+  stringsAllowedBetweenArguments:
+    - amalgamate: 0
+    - '\\x\/\\y'
+    - "in"
+
+removeTrailingWhitespace:
+  beforeProcessing: 1
+# modifyLineBreaks will only be searched if the -m
+# switch is active
+#
+# poly-switch examples:
+#
+#    BeginStartsOnOwnLine:
+#       modify line breaks before a begin statement
+#
+#       when set to -1, e.g
+#               some text some text
+#               \begin{myenvironment}
+#           will be changed to
+#               some text some text \begin{myenvironment}
+#       when set to 0, the switch is ignored
+#       when set to 1, e.g
+#               some text some text \begin{myenvironment}
+#           will be changed to
+#               some text some text
+#               \begin{myenvironment}
+#       when set to 2, e.g
+#               some text some text \begin{myenvironment}
+#           will be changed to
+#               some text some text%
+#               \begin{myenvironment}
+#       when set to 3, e.g
+#               some text some text \begin{myenvironment}
+#           will be changed to
+#               some text some text
+#
+#               \begin{myenvironment}
+#
+#    BodyStartsOnOwnLine:
+#       modify line breaks before the beginning of the body
+#
+#       when set to -1, e.g
+#               \begin{myenv}
+#                   body text body text
+#           will be changed to
+#               \begin{myenv}body text body text
+#       when set to 0, the switch is ignored
+#       when set to 1, e.g
+#               \begin{myenv}body text body text
+#           will be changed to
+#               \begin{myenv}
+#                   body text body text
+#       when set to 2, e.g
+#               \begin{myenv}body text body text
+#           will be changed to
+#               \begin{myenv}%
+#                   body text body text
+#       when set to 3, e.g
+#               \begin{myenv}body text body text
+#           will be changed to
+#               \begin{myenv}
+#
+#                   body text body text
+#
+#    EndStartsOnOwnLine:
+#       modify line breaks before the end statement
+#
+#       when set to -1, e.g
+#               some text some text
+#               \end{myenvironment}
+#           will be changed to
+#               some text some text \end{myenvironment}
+#       when set to 0, the switch is ignored
+#       when set to 1, e.g
+#               some text some text \end{myenvironment}
+#           will be changed to
+#               some text some text
+#               \end{myenvironment}
+#       when set to 2, e.g
+#               some text some text \end{myenvironment}
+#           will be changed to
+#               some text some text%
+#               \end{myenvironment}
+#       when set to 3, e.g
+#               some text some text \end{myenvironment}
+#           will be changed to
+#               some text some text
+#
+#               \end{myenvironment}
+#
+#    EndFinishesWithLineBreak:
+#       modify line breaks after the end statement
+#
+#       when set to -1, e.g
+#               \end{myenvironment}
+#               some text some text
+#           will be changed to
+#                   \end{myenvironment}some text some text
+#       when set to 0, the switch is ignored
+#       when set to 1, e.g
+#               \end{myenvironment}some text some text
+#           will be changed to
+#                   \end{myenvironment}
+#                   some text some text
+#       when set to 2, e.g
+#               \end{myenvironment}some text some text
+#           will be changed to
+#                   \end{myenvironment}%
+#                   some text some text
+#       when set to 3, e.g
+#               \end{myenvironment}some text some text
+#           will be changed to
+#                   \end{myenvironment}
+#
+#                   some text some text
+#
+# you can specify settings on a per-name basis
+
+modifyLineBreaks:
+  condenseMultipleBlankLinesInto: 2
+  textWrapOptions:
+    columns: 72
+    separator: ""
+    perCodeBlockBasis: 1
+    all: 1
+  removeParagraphLineBreaks:
+    mainDocument: 1
+    beforeTextWrap: 1
+    exceptionsToAll:
+      commands:
+        dirtree: 0
+  environments:
+    BeginStartsOnOwnLine: 1
+    BodyStartsOnOwnLine: 1
+    EndStartsOnOwnLine: 1
+    EndFinishesWithLineBreak: 1
+    DBSFinishesWithLineBreak: 1
+  ifElseFi:
+    IfStartsOnOwnLine: 1
+    BodyStartsOnOwnLine: 2
+    OrStartsOnOwnLine: 1
+    OrFinishesWithLineBreak: 1
+    ElseStartsOnOwnLine: 1
+    ElseFinishesWithLineBreak: 1
+    FiStartsOnOwnLine: 1
+    FiFinishesWithLineBreak: 2
+  commands:
+    CommandStartsOnOwnLine: 0
+    CommandNameFinishesWithLineBreak: 0
+  optionalArguments:
+    #     LSqBStartsOnOwnLine: -1
+    #     OptArgBodyStartsOnOwnLine: 1
+    CommandNameFinishesWithLineBreak: 1
+  #     RSqBStartsOnOwnLine: 1
+  #     RSqBFinishesWithLineBreak: 0
+  mandatoryArguments:
+    CommandNameFinishesWithLineBreak: 1
+  #     LCuBStartsOnOwnLine: -1
+  #     MandArgBodyStartsOnOwnLine: 1
+  #     CommaStartsOnOwnLine: 1
+  #     RCuBStartsOnOwnLine: 1
+  #     RCuBFinishesWithLineBreak: 0
+  # all:
+  #   except:
+  #     - {,}
+  keyEqualsValuesBracesBrackets:
+    KeyStartsOnOwnLine: 1
+    EqualsStartsOnOwnLine: 0
+    EqualsFinishesWithLineBreak: 1
+  items:
+    ItemFinishesWithLineBreak: -1
+  specialBeginEnd:
+    SpecialBeginStartsOnOwnLine: 1
+    SpecialBodyStartsOnOwnLine: 1
+    SpecialEndStartsOnOwnLine: 1
+    SpecialEndFinishesWithLineBreak: 1
+  verbatim:
+    VerbatimBeginStartsOnOwnLine: 0
+    VerbatimEndFinishesWithLineBreak: 0
+
+# fineTuning allows you to tweak the internal pattern matching that
+# is central to latexindent.pl
+fineTuning:
+  environments:
+    name: '[a-zA-Z@\*0-9_\\]+'
+  ifElseFi:
+    name: '(?!@?if[a-zA-Z@]*?\{)@?if[a-zA-Z@]*?'
+  commands:
+    name: '[+a-zA-Z@\*0-9_\:]+?'
+  items:
+    canBeFollowedBy: '(?:\[[^]]*?\])|(?:<[^>]*?>)'
+  keyEqualsValuesBracesBrackets:
+    name: '[a-zA-Z@\*0-9_\/.:\#-]+[a-zA-Z@\*0-9_\/.\h\{\}:\#-]*?'
+    follow: '(?:(?<!\\)\{)|,|(?:(?<!\\)\[)'
+  namedGroupingBracesBrackets:
+    name: '[0-9\.a-zA-Z@\*><]+?'
+    follow: '\h|\R|\{|\[|\$|\)|\('
+  UnNamedGroupingBracesBrackets:
+    follow: '\{|\[|,|&|\)|\(|\$'
+  arguments:
+    before: '(?:#\d\h*;?,?\/?)+|\<.*?\>'
+    between: '_|\^|\*'
+  trailingComments:
+    notPreceededBy: '(?<!\\)'
+  modifyLineBreaks:
+    betterFullStop: '(?:\.\)(?!\h*[a-z]))|(?:(?<!(?:(?:e\.g)|(?:i\.e)|(?:etc))))\.(?!(?:[a-z]|[A-Z]|\-|~|\,|[0-9]))'
+    doubleBackSlash: '\\\\(?:\h*\[\h*\d+\h*[a-zA-Z]+\h*\])?'
+    comma: ","
+
+replacements:
+
+  # - substitution: |-
+  #     s/(\\begin\{(objectives|sugestions|answer)})(\{.*?})
+  #     \s*\{?
+  #       (.*?)
+  #       \s*}?
+  #     (\{\d})({\d})?\n?
+  #     (\\end\{(objectives|sugestions|answer)})
+  #     /$1$3$4$7/sgx;
+
+  # - substitution: |-
+  #     s/\\begin\{texto}\s*\{\s*(.*?)\s*}\s*\\end\{texto} /\\begin{teacher}$1\\end{teacher}
+  #     /sgx;
+
+  # - substitution: |-
+  #     s/%?(
+  #       \\clear(margin|(double)?page)\n|
+  #       \\pagebreak|
+#         \\newpage|
+  #       \\def\\currentcolor\{.*?}\n|
+  #       \\exerciselist|
+  #       \\marginpar\{\\vspace\{.*?}}\n?|
+  #       \\mspace\{.*?}\n?|
+  #       \\DUrole\{.*?}\{(.*?)}|
+  #       \\noindent\n?|
+  #       \\capstart\n?|
+  #       \\vspace\{.*?}\n?|
+  #       \\columnbreak|
+  #       \\needspace\{.*?\}|
+  #       (\\end\{objectives})\s*(\\begin\{objectives}\{.*?})|
+  #       (\\end\{sugestions})\s*(\\begin\{sugestions}\{.*?})|
+  #       (\\end\{answer})\s*(\\begin\{answer}\{.*?})|
+  #       (\\phantomsection)
+  #     )//gx;
+
+  # - substitution: |-
+  #     s/\\begin\{apresentacao}({.*?})?(.*?)\\end\{apresentacao}
+  #      /\\begin{teacherintroduction}$2\\end{teacherintroduction}
+  #     /sgx;
+
+  # - substitution: |-
+  #     s/\\begin\{paginatexto}(.*?)\\end\{paginatexto}
+  #      /\\begin{teachersection}$1\\end{teachersection}
+  #     /sgx;
+
+  # - substitution: |-
+  #     s/(\\begin\{habilities})\{EM13MAT(\d\d\d)}(.*?\\end\{habilities})
+  #     /$1\n\\hability{$2}$3
+  #     /sgx;
+  #
+  # - substitution: |-
+  #     s/(\\\w+\{)?EM13MAT(\d\d\d)}?/\\hability{$2}/sg;
+
+  # - substitution: |-
+  #     s/("|``|“)([^"]+?)(("|''|”|“)(\{})?)/\\enquote{$2}/sg;
+
+  # - substitution: |-
+  #     s/([\s"`(])\$\$(.*?)\$\$/$1\\[$2\\]/sg;
+
+  # - substitution: |-
+  #     s/([\s"`(])\$(.+?)\$/$1\\($2\\)/sg;
+
+  # - substitution: |-
+  #     s/(\\\()?\\num\{(\d+)\.?(\d+)?\{?(,)?}?(\d+)?}(\\\))?\\%(\\\))?/\\qty{$2$3$4$5}{\\percent}/sg;
+  #
+  # - substitution: |-
+  #     s/(\$|\\\()?(\d+)\.?(\d+)?\{?(,)?}?(\d+)?(\$|\\\))?\\%(\$|\\\))?/\\qty{$2$3$4$5}{\\percent}/sg;
+
+  # - substitution: |-
+  #     s/R\\\$\s+?(\$|\\\()?(\d+)?\.?(\d+)?\.?(\d+)\.?(\d+)?\{?(,)?}?(\d+)?(\$|\\\))?/\\dBRL{$2$3$4$5$6$7}/sg;
+  #
+  # - substitution: |-
+  #     s/(\$|\\\()?(\d+(,\d+)?)(\$|\\\))?(\$|\\\))?\s+real/\\dBRL[\@name]{$2}/sg;
+  #
+  # - substitution: |-
+  #     s/(\$|\\\()?(\d+)?\.?(\d+)?\.?(\d+)\.?(\d+)?\{?(,)?}?(\d+)?(\$|\\\))?\s+reais/\\dBRL[\@pl]{$2$3$4$5}/sg;
+  #
+  # - substitution: |-
+  #     s/R\\\$(\s*\D)/\\cBRL$1/sg;
+  #
+  # - substitution: |-
+  #     s/\\cBRL\s+\\num/\\dBRL/sgx;
+
+  # - substitution: |-
+  #     s/([^{[],])\b(-?[1-9](?:\d{1,2})?)\.?(\d{3})?\.(\d{3})?\.?(\d{3})\{?(,)?}?(\d+)?\b([^})])/$1\\num{$2$3$4$5$6$7}$8/sg;
+  #
+  # - substitution: |-
+  #     s/([^{[],])\b(-?\d{1,3})\{?,}?(\d+)\b([^})\]\[])/$1\\num{$2,$3}$4/sg;
+  #
+  # - substitution: |-
+  #     s/\\num\{(-?\d{1,3})(?:\.|\s)(\d{3})\.?(\d{3})?\.?(\d{3})?}/\\num{$1$2$3$4}/sg;
+
+  # - substitution: |-
+  #     s/(\d+(,\d+)?)\s*\^\{?\\circ}?/\\ang{$1}/sg;
+  #
+  # - substitution: |-
+  #     s/(\$|\\\()(\\ang\{.*?})(\$|\\\))/$2/sg;
+
+  # -  substitution: |-
+  #     s/\\ang\{([\d,.]+)}C/\\qty{$1}{\\degreeCelcius}/g;
+  #
+  # -  substitution: |-
+  #     s/\\qty\{([\d,.]+)}C/\\qty{$1}{\\degreeCelcius}/g;
+
+  # - substitution: |-
+  #     s/(?:
+  #         \\num\{([\d,.]+)|
+  #         ([^{(.,e=])(\d+)([^}),]?)
+  #       )\s?(
+  #         (m|k|c|d)?m|(m|k)?g|(m|k|M|G|T)?Hz|m?L|(k)?W|(m)?s|(m|k)?V|(k|M|G)?Pa
+  #       )/$2\\qty{$1$3}{\\$5}$4
+  #     /gx;
+
+  # - substitution: |-
+  #     s/(\d{1,2})\s?h(\d{2})\s?min/\\clock{$1}{$2}/g;
+  #
+  # - substitution: |-
+  #     s/(\d{1,2})\s?h/\\clock{$1}{}/g;
+  #
+  # - substitution: |-
+  #     s/(\d{2})\s?min/\\clock{}{$1}/g;
+
+  # - substitution: |-
+  #     s/\\titem\{(\w+)\)}/\\titem\{$1}/sg;
+
+  # - substitution: |-
+  #     s/textit/emph/g;
+
+  # - substitution: |-
+  #     s/observationtitle/observation/g;
+
+  # - substitution: |-
+  #     s/(\\begin\{observation})([^{])/\{}$1/g;
+
+  # - substitution: |-
+  #     s/\\citep/\\parencite/g;
+
+  # - substitution: |-
+  #     s/(\\begin\{tabular}\{.*?})\s+\\hline\n/$1\n\\toprule\n/;
+  #
+  # - substitution: |-
+  #     s/\\hline\s+(\\end\{tabular})\n/\\bottomrule\n$1/;
+  #
+  # - substitution: |-
+  #     s/\\hline\n//g;
+  #
+  # - substitution: |-
+  #     s/\\(tcolor|tmat)\{(.*?)}/$2/sg;
+  #
+  # - substitution: |-
+  #     s/\\tmcol/\\multicolumn/g;
+  #
+  # - substitution: |-
+  #     s/tabu}(\s|\n)+to\s+\\\w+\s*(\{.*?})/tabular}$1/s;
+  #
+  # - substitution: |-
+  #     s/\\thead/\\toprule/g;
+  #
+  # - substitution: |-
+  #     s/end\{tabu}/end{tabular}/s;
+  #
+  # - substitution: |-
+  #     s/(:?\\cellcolor\{.*?}\{?)?\\textcolor\{.*?}\{(:?\\textbf\{)?(.*?)}}?}?/$3/sg;
+
+  # - substitution: |-
+  #     s/(\\includegraphics.*?)\{\{(.*?)}(\.\w+)?}/$1{$2$3}/g
+
+  # - substitution: |-
+  #     s/(\\includegraphics[^\n]*?\n\s*)
+  #       (\\caption\{[^\n]*?)\s+(Fonte.*?)}\s*?\n
+  #      /$2}\n$1\\legend{$3}
+  #      /sgx;
+
+  # - substitution: |-
+  #     s/\\begin\{(figure|table)}\[\w+\]/\\begin\{$1}/sg;
+  #
+  # - substitution: |-
+  #     s/\s+(\\label\{.*?})/$1/sg;
+  #
+  # - substitution: |-
+  #     s/(\\label\{.*?})\s*\\label\{.*?}/$1/sg
+
+  # - substitution: |-
+  #     s/\\ifnum\\aluno=1\n
+  #     (\\clearpage\n)?
+  #     \\else\n
+  #     \\notasfinais\n
+  #     \\fi\n
+  #     //sgx;
+
+  # - substitution: |-
+  #     s/\\hyperref\[(.*?)]\{(.*?(\\ref\{(.*?)})?|Atividade.*?)}/\\cref{$1}/sgx;
+
+  # - substitution: |-
+  #     s/(\\begin\{enumerate})\s*\\setcounter\{enumi}\{\d+}/$1\[resume\]/s
+  #
+  # - substitution: |-
+  #     s/(\\end\{(enumerate)})\s*(\\begin\{enumerate})(\[resume])?\n//sg
+  # - substitution: |-
+  #     s/\\item\s?\{\s?}/\\item/g
+
+  # - substitution: |-
+  #     s/\\setcounter\{enumi}\{\d+}\n\n?//sg
+
+  # - substitution: |-
+  #     s/\\detokenize\{.*?:(.*?)\s?}/\1/g
+
+  # - substitution: |-
+  #     s/º /\\textordmasculine\\ /g
+  #
+  # - substitution: |-
+  #     s/º/\\textordmasculine/g

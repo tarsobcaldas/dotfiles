@@ -1,0 +1,60 @@
+{
+  "main_window_geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAeAAAABJAAADv8AAAU7AAAICgAAAdMAAAqJAAAEogAAAAACAAAAB4AAAAeAAAABSQAADv8AAAU7"
+  },
+  "main_window_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAH9AAAAAgAAAAAAAAAAAAAAAPwCAAAAAvsAAAAQAHQAbwBjAC0AZABvAGMAawAAAAAA/////wAAAIgA////+wAAABYAcwBlAGEAcgBjAGgALQBkAG8AYwBrAAAAAAD/////AAAAlwD///8AAAABAAAAAAAAAAD8AgAAAAT7AAAAFgBsAG8AbwBrAHUAcAAtAGQAbwBjAGsAAAAAAP////8AAACAAP////sAAAAcAGIAbwBvAGsAbQBhAHIAawBzAC0AZABvAGMAawAAAAAA/////wAAAOwA////+wAAABwAaQBuAHMAcABlAGMAdABvAHIALQBkAG8AYwBrAAAAAAD/////AAAAEwD////7AAAAHgBoAGkAZwBoAGwAaQBnAGgAdABzAC0AZABvAGMAawAAAAAA/////wAAAM0A////AAAHgAAAA/MAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAAAAAAAAQAAAB4AYQBjAHQAaQBvAG4AcwBfAHQAbwBvAGwAYgBhAHICAAAAAP////8AAAAAAAAAAA=="
+  },
+  "old_prefs_migrated": true,
+  "session_data": {
+    "base_font_size": 19,
+    "controls_help_shown_count": 2,
+    "standalone_font_settings": {},
+    "standalone_misc_settings": {
+      "remember_last_read": true,
+      "remember_window_geometry": false,
+      "save_annotations_in_ebook": false,
+      "singleinstance": false
+    },
+    "standalone_recently_opened": [
+      {
+        "authors": [
+          "Gustavo Molina"
+        ],
+        "key": "/home/noaxp/Calibre Library/Gustavo Molina/Vale a pena estudar engenharia de alimentos (26)/Vale a pena estudar engenharia de alimento - Gustavo Molina.epub",
+        "pathtoebook": "/home/noaxp/Calibre Library/Gustavo Molina/Vale a pena estudar engenharia de alimentos (26)/Vale a pena estudar engenharia de alimento - Gustavo Molina.epub",
+        "timestamp": "2022-07-18T15:50:22.535Z",
+        "title": "Vale à pena estudar engenharia de alimentos"
+      },
+      {
+        "authors": [
+          "Gustavo Molina"
+        ],
+        "key": "/home/noaxp/Calibre Library/Gustavo Molina/Vale a pena estudar engenharia de alimentos (24)/Vale a pena estudar engenharia de alimento - Gustavo Molina.epub",
+        "pathtoebook": "/home/noaxp/Calibre Library/Gustavo Molina/Vale a pena estudar engenharia de alimentos (24)/Vale a pena estudar engenharia de alimento - Gustavo Molina.epub",
+        "timestamp": "2022-07-18T15:45:54.057Z",
+        "title": "Vale à pena estudar engenharia de alimentos"
+      },
+      {
+        "authors": [
+          "Clóvis Pereira da Silva"
+        ],
+        "key": "/home/noaxp/Calibre Library/Clovis Pereira da Silva/Matematica no Brasil_ historia de seu desenvolvimento (3)/Matematica no Brasil_ historia de seu dese - Clovis Pereira da Silva.epub",
+        "pathtoebook": "/home/noaxp/Calibre Library/Clovis Pereira da Silva/Matematica no Brasil_ historia de seu desenvolvimento (3)/Matematica no Brasil_ historia de seu dese - Clovis Pereira da Silva.epub",
+        "timestamp": "2022-06-11T02:41:40.213Z",
+        "title": "Matemática no Brasil: historia de seu desenvolvimento"
+      },
+      {
+        "authors": [
+          "Daniel Rodrigues dos Santos e Henrique Cândido Oliveira"
+        ],
+        "key": "/home/noaxp/Calibre Library/Daniel Rodrigues dos Santos e Henrique Candido Oliveira/Principios de aquisicao e processamento de dados espaciais (2)/Principios de aquisicao e processamento de - Daniel Rodrigues dos Santos e Henrique Can.epub",
+        "pathtoebook": "/home/noaxp/Calibre Library/Daniel Rodrigues dos Santos e Henrique Candido Oliveira/Principios de aquisicao e processamento de dados espaciais (2)/Principios de aquisicao e processamento de - Daniel Rodrigues dos Santos e Henrique Can.epub",
+        "timestamp": "2022-06-11T02:37:59.446Z",
+        "title": "Princípios de aquisição e processamento de dados espaciais"
+      }
+    ]
+  }
+}
