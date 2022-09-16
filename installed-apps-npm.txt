@@ -1,0 +1,5 @@
+/home/noaxp/.nvm/versions/node/v16.15.1/lib
+├── corepack@0.10.0
+├── neovim@4.10.1
+└── npm@8.12.2
+
