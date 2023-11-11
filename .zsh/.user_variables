@@ -7,6 +7,5 @@ export EDITOR=nvim
 export VISUAL=nvim
 export ZNAPFOLDER=$HOME/Git
 export ASYMPTOTE_DIR=/usr/local/share/systemtap
-export OPENAI_API_KEY="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"
 export COOKIE_FILE=~/.bing-cookies.json
 export TEXMFHOME=~/texmf
