@@ -6,11 +6,6 @@
     }
   ],
   "skiptaskbarhidden": [],
-<<<<<<< HEAD
   "log_on_focus": false,
   "default_pointer_position": "TOP_LEFT"
 }
-=======
-  "log_on_focus": false
-}
->>>>>>> 0910124 (Updated configuration files)
