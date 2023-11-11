@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+
+alias sz='source ~/.zshrc'
+alias vz='vim ~/.zshrc'
+
+# alias nvim="nvim --listen ~/.cache/nvim/server.pipe"
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+
+alias tmux='TERM=screen-256color-bce tmux'
+
+# Open .zsh config files
+alias usr_var='vim ~/.zsh/.user_variables'
+alias usr_func='vim ~/.zsh/.user_functions'
+alias usr_alias='vim ~/.zsh/.user_aliases'
+alias usr_path='vim ~/.zsh/.user_addtopath'
+alias zautoc='vim ~/.zsh/.zsh-autocomplete'
+alias zsnapconf='vim ~/.zsh/.znap'
+
+alias uvar='usr_var'
+alias ufunc='usr_func'
+alias ualias='usr_alias'
+alias upath='usr_path'
+
+alias am='arara main -v'
+alias aa='arara aluno -v'
+alias ap='arara professor -v'
+alias ar='arara -v'
+alias om='open main.pdf'
+alias oa='open aluno.pdf'
+alias op='open professor.pdf'
+alias f=fff
+alias z=zenith
+
+alias info='info --vi-keys'
+alias n=nautilus-open

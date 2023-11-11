@@ -29,9 +29,16 @@ maxNumberOfBackUps: 2
 verbatimEnvironments:
   verbatim: 1
   lstlisting: 1
+<<<<<<< HEAD
   minted: 1
   latexcode: 1
   cppcode: 1
+=======
+  ccode: 1
+  minted: 1
+  cppcode: 1
+  latexcode: 1
+>>>>>>> 0910124 (Updated configuration files)
   portugolcode: 1
   nameAsRegex:
     name: '\w+code\*?'
@@ -40,6 +47,10 @@ verbatimEnvironments:
 #  verbatim commands such as \verb! body !, \lstinline$something else$
 verbatimCommands:
   verb: 1
+<<<<<<< HEAD
+=======
+  cinline: 1
+>>>>>>> 0910124 (Updated configuration files)
   lstinline: 1
   cppinline: 1
   latexinline: 1
@@ -143,7 +154,11 @@ indentRules:
 
 commandCodeBlocks:
   stringsAllowedBetweenArguments:
+<<<<<<< HEAD
     - amalgamate: 0
+=======
+    - amalgamate: 1
+>>>>>>> 0910124 (Updated configuration files)
     - '\\x\/\\y'
     - "in"
 
@@ -264,15 +279,30 @@ modifyLineBreaks:
   condenseMultipleBlankLinesInto: 2
   textWrapOptions:
     columns: 72
+<<<<<<< HEAD
     separator: ""
     perCodeBlockBasis: 1
+=======
+    perCodeBlockBasis: 1
+    beforeFindingChildCodeBlocks: 1
+    masterDocument: 1
+>>>>>>> 0910124 (Updated configuration files)
     all: 1
   removeParagraphLineBreaks:
     mainDocument: 1
     beforeTextWrap: 1
+<<<<<<< HEAD
     exceptionsToAll:
       commands:
         dirtree: 0
+=======
+    masterDocument: 1
+    exceptionsToAll:
+      commands:
+        dirtree: 0
+  oneSentencePerLine:
+    manipulateSentences: 0
+>>>>>>> 0910124 (Updated configuration files)
   environments:
     BeginStartsOnOwnLine: 1
     BodyStartsOnOwnLine: 1
@@ -299,6 +329,7 @@ modifyLineBreaks:
   #     RSqBFinishesWithLineBreak: 0
   mandatoryArguments:
     CommandNameFinishesWithLineBreak: 1
+<<<<<<< HEAD
   #     LCuBStartsOnOwnLine: -1
   #     MandArgBodyStartsOnOwnLine: 1
   #     CommaStartsOnOwnLine: 1
@@ -307,6 +338,9 @@ modifyLineBreaks:
   # all:
   #   except:
   #     - {,}
+=======
+    # RCuBFinishesWithLineBreak: 1
+>>>>>>> 0910124 (Updated configuration files)
   keyEqualsValuesBracesBrackets:
     KeyStartsOnOwnLine: 1
     EqualsStartsOnOwnLine: 0
@@ -358,6 +392,7 @@ replacements:
   #     \s*\{?
   #       (.*?)
   #       \s*}?
+<<<<<<< HEAD
   #     (\{\d})({\d})?\n?
   #     (\\end\{(objectives|sugestions|answer)})
   #     /$1$3$4$7/sgx;
@@ -388,6 +423,74 @@ replacements:
   #     )//gx;
 
   # - substitution: |-
+=======
+  #     (\{\d})\s*({\d})?\s*
+  #     (\\end\{(objectives|sugestions|answer)})
+  #     /$1$3\n$4\n\n$7/sgx;
+
+  - substitution: |-
+      s/(\\clear(margin|(double)?page)\n|
+        \\pagebreak|
+        \\newpage|
+        \\def\\currentcolor\{.*?}\n|
+        \\exerciselist|
+        \\marginpar\{\\vspace\{.*?}}\n?|
+        \\mspace\{.*?}\n?|
+        \\DUrole\{.*?}\{(.*?)}|
+        \\noindent\n?|
+        \\capstart\n?|
+        \\vspace\{.*?}\n?|
+        \\columnbreak|
+        \\needspace\{.*?\}|
+        (\\phantomsection)|
+        (\%\s*(P|p)(á|a)gina\s*\d+)|
+        \\index\{.*?}\s?|
+        \\label\{:doc}
+      )//gx;
+
+  # - substitution: |-
+  #     s/(
+  #       (\\end\{objectives})\s*(\\begin\{objectives}\{.*?})|
+  #       (\\end\{sugestions})\s*(\\begin\{sugestions}\{.*?})|
+  #       (\\end\{answer})\s*(\\begin\{answer}\{.*?})|
+  #     )//gx;
+
+  # - substitution: |-
+  #     s/(?!\\begin\{teacher}\s*)
+  #         (\\begin\{objectives}(\{.*?})
+  #           .*?
+  #         \\begin\{answer}\2
+  #           .*?
+  #         \\end\{answer})
+  #       (?!\s*\\end\{teacher})
+  #     /\\begin\{teacher}$1\r\\end{teacher}/sgx
+  #
+  # - substitution: |-
+  #     s/(?!\\begin\{teacher}\s*)
+  #         (\\begin\{objectives}(\{.*?})
+  #           .*?
+  #         \\begin\{sugestions}\2
+  #           .*?
+  #         \\end\{sugestions})
+  #       (?!\s*\\end\{(teacher)}|\s*\\begin\{answer})
+  #     /\\begin\{teacher}$1\r\\end{teacher}/sgx
+  #
+  # - substitution: |-
+  #     s/(?!\\begin\{teacher}\s*|\\end\{objectives}\s*)
+  #         (\\begin\{sugestions}(\{.*?})
+  #           .*?
+  #         \\begin\{answer}\2
+  #           .*?
+  #         \\end\{answer})
+  #       (?!\s*\\end\{(teacher)})
+  #     /\\begin\{teacher}$1\r\\end{teacher}/sgx
+
+  # - substitution: |-
+  #     s/\\begin\{texto}\s*\{\s*(.*?)\s*}\s*\\end\{texto} /\\begin{teachersection}$1\\end{teachersection}
+  #     /sgx;
+
+  # - substitution: |-
+>>>>>>> 0910124 (Updated configuration files)
   #     s/\\begin\{apresentacao}({.*?})?(.*?)\\end\{apresentacao}
   #      /\\begin{teacherintroduction}$2\\end{teacherintroduction}
   #     /sgx;
@@ -404,6 +507,7 @@ replacements:
   #
   # - substitution: |-
   #     s/(\\\w+\{)?EM13MAT(\d\d\d)}?/\\hability{$2}/sg;
+<<<<<<< HEAD
 
   # - substitution: |-
   #     s/("|``|“)([^"]+?)(("|''|”|“)(\{})?)/\\enquote{$2}/sg;
@@ -413,6 +517,17 @@ replacements:
 
   # - substitution: |-
   #     s/([\s"`(])\$(.+?)\$/$1\\($2\\)/sg;
+=======
+  #
+  # - substitution: |-
+  #     s/(\\\w+\{)?EF(\d\d)MA(\d\d)}?/\\efhability{$2}{$3}/sg;
+
+  # - substitution: |-
+  #     s/("|``|“)([^"]+?)(("|''|”)(\{})?)/\\enquote{$2}/sg;
+
+  # - substitution: |-
+  #     s/\\bm\{(.*?)}/$1/g;
+>>>>>>> 0910124 (Updated configuration files)
 
   # - substitution: |-
   #     s/(\\\()?\\num\{(\d+)\.?(\d+)?\{?(,)?}?(\d+)?}(\\\))?\\%(\\\))?/\\qty{$2$3$4$5}{\\percent}/sg;
@@ -421,18 +536,48 @@ replacements:
   #     s/(\$|\\\()?(\d+)\.?(\d+)?\{?(,)?}?(\d+)?(\$|\\\))?\\%(\$|\\\))?/\\qty{$2$3$4$5}{\\percent}/sg;
 
   # - substitution: |-
+<<<<<<< HEAD
   #     s/R\\\$\s+?(\$|\\\()?(\d+)?\.?(\d+)?\.?(\d+)\.?(\d+)?\{?(,)?}?(\d+)?(\$|\\\))?/\\dBRL{$2$3$4$5$6$7}/sg;
+=======
+  #     s/\{,}/,/g;
+  #
+  # - substitution: |-
+  #     s/([^{\[\],.])(?:\\\(|\$)?
+  #       \b(-?[1-9](?:\d{1,2})?)
+  #       \.?(\d{3})?
+  #       \.(\d{3})?
+  #     \.?(\d{3})\{?(,)?}?(\d+)?\b
+  #       (?:\\\)|\$)?([^})])
+  #     /$1\\num{$2$3$4$5$6$7}$8/sgx;
+  #
+  # - substitution: |-
+  #     s/([^{\[\](,.])(?:\\\(|\$)?
+  #       \b(-?\d{1,3})\{?,}?(\d+)\b
+  #       (?:\\\)|\$)?([^})\]\[])
+  #     /$1\\num{$2,$3}$4/sgx;
+
+  # - substitution: |-
+  #     s/\\num\{(-?\d{1,3})(?:\.|\s)(\d{3})\.?(\d{3})?\.?(\d{3})?}/\\num{$1$2$3$4}/sgx;
+
+  # - substitution: |-
+  #     s/R\$\s*?(\$|\\\()?(\d+)?\.?(\d+)?\.?(\d+)\.?(\d+)?\{?(,)?}?(\d+)?(\$|\\\))?/\\dBRL{$2$3$4$5$6$7}/sg;
+>>>>>>> 0910124 (Updated configuration files)
   #
   # - substitution: |-
   #     s/(\$|\\\()?(\d+(,\d+)?)(\$|\\\))?(\$|\\\))?\s+real/\\dBRL[\@name]{$2}/sg;
   #
   # - substitution: |-
+<<<<<<< HEAD
   #     s/(\$|\\\()?(\d+)?\.?(\d+)?\.?(\d+)\.?(\d+)?\{?(,)?}?(\d+)?(\$|\\\))?\s+reais/\\dBRL[\@pl]{$2$3$4$5}/sg;
+=======
+  #     s/(\$|\\\()?(\d+)?\.?(\d+)?\.?(\d+)\.?(\d+)?\{?(,)?}?(\d+)?(\$|\\\))?\s+\breais\b/\\dBRL[\@pl]{$2$3$4$5}/sg;
+>>>>>>> 0910124 (Updated configuration files)
   #
   # - substitution: |-
   #     s/R\\\$(\s*\D)/\\cBRL$1/sg;
   #
   # - substitution: |-
+<<<<<<< HEAD
   #     s/\\cBRL\s+\\num/\\dBRL/sgx;
 
   # - substitution: |-
@@ -464,6 +609,59 @@ replacements:
   #         (m|k|c|d)?m|(m|k)?g|(m|k|M|G|T)?Hz|m?L|(k)?W|(m)?s|(m|k)?V|(k|M|G)?Pa
   #       )/$2\\qty{$1$3}{\\$5}$4
   #     /gx;
+=======
+  #     s/\\cBRL\s*\\num/\\dBRL/sgx;
+
+  # - substitution: |-
+  #     s/([\s"`(])\$\$(.*?)\$\$/$1\\[$2\\]/sg;
+  #
+  # - substitution: |-
+  #     s/([\s"`(])\$\s?(.+?)\s?\$/$1\\($2\\)/sg;
+
+  # - substitution: |-
+  #     s/-(\\(?:num|ang)\{)/$1-/g;
+
+  # - substitution: |-
+  #     s/(\\(?:d|s)?frac\{)(\d+,\d+)}/$1\\num{$2}}/sg;
+  #
+  # - substitution: |-
+  #     s/(\\(?:d|s)?frac\{.*?}\{)(\d+,\d+)}/$1\\num{$2}}/sg;
+
+  # - substitution: |-
+  #     s/(\\(log|ln)\s+)(\d+,\d+)/$1\\num{$2}/sg
+  #
+  # - substitution: |-
+  #     s/(\\(log|ln)\_\{)(\d+,\d+})/$1\\num{$2}/sg
+  #
+  # - substitution: |-
+  #     s/(e\^\{)(\d+,\d+)/$1\\num{$2}/sg
+
+  # - substitution: |-
+  #     s/(?:\\num\{)?(\d+(,\d+)?)}?\s*\^\{?\\circ}?/\\ang{$1}/sg;
+  #
+  # - substitution: |-
+  #     s/(\$|\\\()(\\ang\{.*?})(\$|\\\))/$2/sg;
+  
+  # -  substitution: |-
+  #     s/\\ang\{([\d,.]+)}\s?C/\\qty{$1}{\\degreeCelsius}/g;
+  #
+  # -  substitution: |-
+  #     s/\\qty\{([\d,.]+)}\s?C/\\qty{$1}{\\degreeCelsius}/g;
+  #
+  # -  substitution: |-
+  #     s/\\ang\{([\d,.]+)}\s?F/\\qty{$1}{\\degreeFahrenheit}/g;
+  #
+  # -  substitution: |-
+  #     s/\\qty\{([\d,.]+)}\s?F/\\qty{$1}{\\degreeFahrenheit}/g;
+
+  # - substitution: |-
+  #     s/(?:\\num\{([\d,.]+)}\s?|
+  #       ([^{(.,e=0-9]\s*)(?:\\\()?(\d+)(?:\\\))?)\s*((m|k|c|d)?m|(m|k)?g|(m|k|M|G|T)?Hz|m?L|(k)?W|(m)?s|(m|k)?V|(k|M|G)?Pa)\b(\\\))?
+  #      /$2\\qty{$1$3}{\\$4}/sgxi
+#
+  # - substitution: |-
+  #     s/\\((m|k|c|d)?m)}\/(s|h)/\\$1\\per\\$3}/g
+>>>>>>> 0910124 (Updated configuration files)
 
   # - substitution: |-
   #     s/(\d{1,2})\s?h(\d{2})\s?min/\\clock{$1}{$2}/g;
@@ -475,6 +673,15 @@ replacements:
   #     s/(\d{2})\s?min/\\clock{}{$1}/g;
 
   # - substitution: |-
+<<<<<<< HEAD
+=======
+  #     s/([^\\])((\\left)\(.*?(\\right)\))\^/$1\{$2}\^/gx;
+  #
+  # - substitution: |-
+  #     s/([^\\])(\([^(]*?\))\^/$1\{$2}\^/g;
+
+  # - substitution: |-
+>>>>>>> 0910124 (Updated configuration files)
   #     s/\\titem\{(\w+)\)}/\\titem\{$1}/sg;
 
   # - substitution: |-
@@ -482,6 +689,7 @@ replacements:
 
   # - substitution: |-
   #     s/observationtitle/observation/g;
+<<<<<<< HEAD
 
   # - substitution: |-
   #     s/(\\begin\{observation})([^{])/\{}$1/g;
@@ -491,6 +699,23 @@ replacements:
 
   # - substitution: |-
   #     s/(\\begin\{tabular}\{.*?})\s+\\hline\n/$1\n\\toprule\n/;
+=======
+  #
+  # - substitution: |-
+  #     s/(\\begin\{observation})([^{])/$1\{}\n/g;
+
+  # - substitution: |-
+  #     s/\\citep/\\parencite/g;
+  #
+  # - substitution: |-
+  #     s/\\citet/\\textcite/g;
+
+  # - substitution: |-
+  #     s/\(p\.\s*?\\pageref(.*?)\)/\\cpageref$1/g;
+
+  # - substitution: |-
+  #     s/(\\begin\{tabular}\{.*?}\s+)\\hline\n/$1\\toprule\n/;
+>>>>>>> 0910124 (Updated configuration files)
   #
   # - substitution: |-
   #     s/\\hline\s+(\\end\{tabular})\n/\\bottomrule\n$1/;
@@ -517,6 +742,7 @@ replacements:
   #     s/(:?\\cellcolor\{.*?}\{?)?\\textcolor\{.*?}\{(:?\\textbf\{)?(.*?)}}?}?/$3/sg;
 
   # - substitution: |-
+<<<<<<< HEAD
   #     s/(\\includegraphics.*?)\{\{(.*?)}(\.\w+)?}/$1{$2$3}/g
 
   # - substitution: |-
@@ -524,12 +750,31 @@ replacements:
   #       (\\caption\{[^\n]*?)\s+(Fonte.*?)}\s*?\n
   #      /$2}\n$1\\legend{$3}
   #      /sgx;
+=======
+  #     s/(\\includegraphics.*?)\{\{(.*?)}(\.\w+)?}/$1\{$2$3}/g
+
+  # - substitution: |-
+  #     s/(\\includegraphics[^\n]*?\n\s*)
+  #       (\\caption\{[^\n]*?)\s+?\(?((fonte|versão interativa).*?)\)?\??}\s*?\n
+  #      /$2}\n$1\\legend{\u$3}
+  #      /sgxi;
+
+  # - substitution: |-
+  #     s/(Fonte\:\s[^(]*?)\)\./$1\./sg
+>>>>>>> 0910124 (Updated configuration files)
 
   # - substitution: |-
   #     s/\\begin\{(figure|table)}\[\w+\]/\\begin\{$1}/sg;
   #
   # - substitution: |-
+<<<<<<< HEAD
   #     s/\s+(\\label\{.*?})/$1/sg;
+=======
+  #     s/(\\caption\{.*?})\s*(\\label\{.*?})/$1%\r$2/sg;
+  #
+  # - substitution: |-
+  #     s/([^%])\s+(\\label\{.*?})/$1$2/sg;
+>>>>>>> 0910124 (Updated configuration files)
   #
   # - substitution: |-
   #     s/(\\label\{.*?})\s*\\label\{.*?}/$1/sg
@@ -543,6 +788,7 @@ replacements:
   #     //sgx;
 
   # - substitution: |-
+<<<<<<< HEAD
   #     s/\\hyperref\[(.*?)]\{(.*?(\\ref\{(.*?)})?|Atividade.*?)}/\\cref{$1}/sgx;
 
   # - substitution: |-
@@ -564,3 +810,46 @@ replacements:
   #
   # - substitution: |-
   #     s/º/\\textordmasculine/g
+=======
+  #     s/\\detokenize\{.*?:(.*?)\s?}/\1/g
+  #
+  # - substitution: |-
+  #     s/\\label{id\d+}\n?//g
+
+  # - substitution: |-
+  #     s/\\hyperref\[(.*?)]\{(.*?(\\c?ref\{(.*?)})?|Atividade.*?)}}?/\\cref{$1}/sgx;
+
+   # - substitution: |-
+  #     s/(\\(cref|label)\{(.*?)})}/$1/g
+
+  # - substitution: |-
+  #     s/\\(f|t|F|T|eq)(ref{.*?})/\\c$2/sg;
+
+  # - substitution: |-
+  #     s/(\\begin\{enumerate})(?:\[wide])\s*\\setcounter\{enumi}\{\d+}/$1\[resume\]/s
+  #
+  # - substitution: |-
+  #     s/(\\end\{(enumerate)})\s*(\\begin\{enumerate})(\[resume])?\n/\r/sg
+  #
+  # - substitution: |-
+  #     s/\\(i|I)tem\s*\{\s*}/\\item/g
+  #
+  # - substitution: |-
+  #     s/\\item\s{2,}/\\item /sg
+  #  
+  # - substitution: |-
+  #       s/\\setcounter\{enumii?}\{\d+}\n\n?//sg
+
+  # - substitution: |-
+  #     s/(º|\\super\{o}) /\\textordmasculine\\ /g
+  #
+  # - substitution: |-
+  #     s/º|\\super\{o}/\\textordmasculine/g
+  #
+  #
+  # - substitution: |-
+  #     s/(ᵃ|\\super\{a}) /\\textordfeminine\\ /g
+  #
+  # - substitution: |-
+  #     s/ᵃ|\\super\{a}/\\textordfeminine/g
+>>>>>>> 0910124 (Updated configuration files)

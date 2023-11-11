@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export PATH="~/.local/bin/:/usr/local/texlive/2022/bin/x86_64-linux/:$PATH"
+export PATH="~/.cargo/bin/:$PATH"
+export PATH="~/bin/:$PATH"
+export PATH="$HOME/Downloads/boost_1_76_0":$PATH
+export PATH="$HOME/.local/share/flatpak/exports/bin":$PATH
+export PATH=".ghcup":$PATH
+export PATH=".ghcup/bin":$PATH
+export PATH="$HOME/.local/share/nvim/site/pack/packer/start/nvim-texlabconfig":$PATH
+export PATH="/home/noaxp/node_modules/.bin/":$PATH

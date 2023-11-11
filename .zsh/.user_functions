@@ -1,0 +1,45 @@
+#!/bin/bash
+
+
+function pdfcompress ()
+{
+    gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dEmbedAllFonts=true -dSubsetFonts=true -dColorImageDownsampleType=/Bicubic -dColorImageResolution=144 -dGrayImageDownsampleType=/Bicubic -dGrayImageResolution=144 -dMonoImageDownsampleType=/Bicubic -dMonoImageResolution=144 -sOutputFile=$1.compressed.pdf $1;
+}
+
+function open () {
+    xdg-open "$@">/dev/null 2>&1
+}
+
+function foxit () {
+    foxitreader "$1">/dev/null 2>&1 &
+}
+
+function addtopath () {
+    echo "export PATH=\"$1\""':$PATH' >> ~/.zsh/.user_addtopath;
+}
+
+function youtube-dl-trimmed () {
+    ffmpeg $(youtube-dl -g "$1" | sed 's/^/-ss '"$2"' -i /') -t "$3" -c copy "$4"
+}
+
+function batch-png2pdf () {
+    for file in *.png; do
+        img2pdf "$file" -o "${file%.png}.pdf"
+    done
+}
+
+function batch-jpg2pdf () {
+    for file in *.jpg; do
+        img2pdf "$file" -o "${file%.jpg}.pdf"
+    done
+}
+
+function batch-svg2pdf () {
+    for file in *.svg; do
+        svg2pdf "$file" -o "${file%.svg}.pdf"
+    done
+}
+
+function nautilus-open () {
+    nautilus "$@">/dev/null 2>&1
+}

@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 set dbus-service true
 set synctex true
 set synctex-editor-command "nvim --headless -c "VimtexInverseSearch %{line} '%{input}'""
 set sandbox none
 set selection-clipboard clipboard
+=======
+set selection-clipboard clipboard
+set synctex-editor-command "nvim --server ~/.cache/nvim/server.pipe --remote +%{line} %{input}"
+set sandbox none
+>>>>>>> 0910124 (Updated configuration files)
