@@ -514,9 +514,9 @@ WipeArg
     \cite:[][]{} \nocite:{}
     \input:{} \verbatiminput:[]{} \listinginput:[]{}{}
     \verbatimtabinput:[]{} \include:{} \includeonly:{}
-    \bibitem:[]{}
+    \bibitem:[]{} \cinline:{}
     \cline:{} \cmidrule:[](){}
-    \href:{}{}
+    \href:{}{} \code:{}
     # Cleveref -- there are many others that could be here as well...
     \cref:*{} \cpageref:*{} \crefrange:*{}{} \cpagerefrange:*{}{}
     \Cref:*{} \Cpageref:*{} \Crefrange:*{}{} \Cpagerefrange:*{}{}
@@ -579,7 +579,7 @@ VerbEnvir
 {
     verbatim comment listing verbatimtab rawhtml errexam picture texdraw
     filecontents pgfpicture tikzpicture minted lstlisting IPA portugolcode
-    cppcode
+    cppcode arduinocode ccode haskellcode
 }
 
 #####################################################################

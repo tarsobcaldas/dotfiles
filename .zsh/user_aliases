@@ -1,0 +1,73 @@
+#!/bin/zsh
+
+alias sz='source ~/.zshrc'
+alias vz='vim ~/.zshrc'
+
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+
+alias tmux='TERM=screen-256color-bce tmux'
+
+# Open .zsh config files
+alias usr_var='vim ~/.zsh/user_variables'
+alias usr_func='vim ~/.zsh/user_functions'
+alias usr_alias='vim ~/.zsh/user_aliases'
+alias usr_path='vim ~/.zsh/user_addtopath'
+alias ucomp='vim ~/.zsh/zsh-autocomplete'
+alias zautoc='vim ~/.zsh/zsh-autocomplete'
+alias zsnapconf='vim ~/.zsh/znap'
+
+alias uvar='usr_var'
+alias ufunc='usr_func'
+alias ualias='usr_alias'
+alias upath='usr_path'
+
+alias am='arara main -v'
+alias aa='arara aluno -v'
+alias ap='arara professor -v'
+alias ar='arara -v'
+alias apr='arara presentation.tex -v'
+alias om='open main.pdf'
+alias oa='open aluno.pdf'
+alias op='open professor.pdf'
+alias opr='open presentation.pdf'
+alias f=fff
+alias z=zenith
+
+alias info='info --vi-keys'
+alias n='nautilus-open'
+
+alias logoff='gnome-session-quit --logout --no-prompt'
+
+alias cyberghost='sudo cyberghostvpn'
+alias cg-channel4='cyberghost --streaming "Channel 4" --country-code GB --connect'
+alias cguk='cyberghost --streaming --country-code GB --connect'
+alias cg='cyberghost --connect'
+alias cgbr='cyberghost --country-code BR --connect'
+alias cgkill='cyberghost --stop'
+alias cgstatus='cyberghost --status'
+alias cgk='cgkill'
+
+alias piper='piper-tts'
+
+alias alv='alias_value'
+alias whatalias='alias_value'
+
+alias cloudsh='gcloud cloud-shell ssh --authorize-session'
+alias scheme='lips -q'
+alias scm='scheme'
+alias npm='sudo npm'
+alias ls='eza --icons=always'
+alias cat='bat'
+
+alias del='trash-put'
+alias empty='trash-empty'
+alias trestore='trash-restore'
+alias trm='trash-rm'
+alias tls='trash-list'
+alias truerm='/usr/bin/rm'
+alias rm='echo "Use del instead of rm"'
+alias fetch='fastfetch'
+alias deadletter='del $HOME/dead.letter'
+alias grep=rg

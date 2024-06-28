@@ -98,3 +98,26 @@ bindkey -M menuselect '\r' .accept-line
 # ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # ZSH_AUTOSUGGEST_USE_ASYNC=true bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
+
+
+
+# compdef _gnu_generic cyberghostvpn
+# compdef _gnu_generic spd-conf
+# compdef _gnu_generic spd-say
+# compdef _gnu_generic festival
+# compdef _gnu_generic piper-tts
+# compdef _gnu_generic gnome-randr
+
+TO_COMPLETE=(      
+  "cyberghostvpn"
+  "spd-conf"
+  "spd-say"
+  "festival"
+  "piper-tts"
+  "gnome-randr"
+  "exa" 
+)
+
+for cmd in $TO_COMPLETE; do
+    compdef _gnu_generic $cmd
+done

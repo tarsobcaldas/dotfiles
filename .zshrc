@@ -80,6 +80,14 @@ plugins=(
   gitignore
   vi-mode
   fast-syntax-highlighting
+  gcloud
+  colorize
+  colored-man-pages
+  docker
+  history
+  ripgrep
+  sudo
+  zsh-navigation-tools
 )
 
 export FZF_BASE=/usr/bin/fzf
@@ -107,14 +115,20 @@ source $ZSH/oh-my-zsh.sh
 
 # User configurations
 
-for file in ~/.zsh/.*; do source $file; done
+for file in ~/.zsh/*; do source $file; done
 
 autoload -U compinit; compinit
 setopt extended_glob
+tabs 2
 
-#[ -f "/home/noaxp/.ghcup/env" ] && source "/home/noaxp/.ghcup/env" # ghcup-env
 
-# opam configuration
-[[ ! -r /home/noaxp/.opam/opam-init/init.zsh ]] || source /home/noaxp/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+[[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh"  > "/dev/null" 2> "/dev/null"
+[[ -s "$HOME/.cache/yay/autojump/pkg/autojump/etc/profile.d/autojump.sh" ]] && source "$HOME/.cache/yay/autojump/pkg/autojump/etc/profile.d/autojump.sh"
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
-[ -f "/home/noaxp/.ghcup/env" ] && source "/home/noaxp/.ghcup/env" # ghcup-env
+source "/etc/profile.d/google-cloud-cli.sh"
+
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval `ssh-agent -s`
+  ssh-add
+fi

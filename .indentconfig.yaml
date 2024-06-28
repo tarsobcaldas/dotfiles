@@ -32,6 +32,7 @@ verbatimEnvironments:
   minted: 1
   latexcode: 1
   cppcode: 1
+  ccode: 1
   portugolcode: 1
   nameAsRegex:
     name: '\w+code\*?'
@@ -44,6 +45,8 @@ verbatimCommands:
   cppinline: 1
   latexinline: 1
   portugolinline: 1
+  code: 1
+  cinline: 1
 
 # indent preamble
 indentPreamble: 1
@@ -351,7 +354,7 @@ fineTuning:
     doubleBackSlash: '\\\\(?:\h*\[\h*\d+\h*[a-zA-Z]+\h*\])?'
     comma: ","
 
-replacements:
+# replacements:
 
   # - substitution: |-
   #     s/(\\begin\{(objectives|sugestions|answer)})(\{.*?})
@@ -415,10 +418,10 @@ replacements:
   #     s/([\s"`(])\$(.+?)\$/$1\\($2\\)/sg;
 
   # - substitution: |-
-  #     s/(\\\()?\\num\{(\d+)\.?(\d+)?\{?(,)?}?(\d+)?}(\\\))?\\%(\\\))?/\\qty{$2$3$4$5}{\\percent}/sg;
-  #
+  #     s/(\\\()?\\num\{(\d+)\.?(\d+)?\{?([,.])?}?(\d+)?}(\\\))?\\%(\\\))?/\\percentage{$2$3$4$5}/sg;
+
   # - substitution: |-
-  #     s/(\$|\\\()?(\d+)\.?(\d+)?\{?(,)?}?(\d+)?(\$|\\\))?\\%(\$|\\\))?/\\qty{$2$3$4$5}{\\percent}/sg;
+  #     s/(\$|\\\()?(\d+)\.?(\d+)?\{?([,.])?}?(\d+)?(\$|\\\))?\\%(\$|\\\))?/\\percentage{$2$3$4$5}/sg;
 
   # - substitution: |-
   #     s/R\\\$\s+?(\$|\\\()?(\d+)?\.?(\d+)?\.?(\d+)\.?(\d+)?\{?(,)?}?(\d+)?(\$|\\\))?/\\dBRL{$2$3$4$5$6$7}/sg;
@@ -451,18 +454,18 @@ replacements:
   #     s/(\$|\\\()(\\ang\{.*?})(\$|\\\))/$2/sg;
 
   # -  substitution: |-
-  #     s/\\ang\{([\d,.]+)}C/\\qty{$1}{\\degreeCelcius}/g;
+  #     s/\\ang\{([\d,.]+)}C/\\qty{$1}{\\degreeCelsius}/g;
   #
   # -  substitution: |-
-  #     s/\\qty\{([\d,.]+)}C/\\qty{$1}{\\degreeCelcius}/g;
+  #     s/\\qty\{([\d,.]+)}C/\\qty{$1}{\\degreeCelsius}/g;
 
   # - substitution: |-
   #     s/(?:
   #         \\num\{([\d,.]+)|
   #         ([^{(.,e=])(\d+)([^}),]?)
-  #       )\s?(
+  #     )\s?(?:\\text\{)?(
   #         (m|k|c|d)?m|(m|k)?g|(m|k|M|G|T)?Hz|m?L|(k)?W|(m)?s|(m|k)?V|(k|M|G)?Pa
-  #       )/$2\\qty{$1$3}{\\$5}$4
+  #     )(?:})?/$2\\qty{$1$3}{\\$5}$4
   #     /gx;
 
   # - substitution: |-
@@ -514,7 +517,7 @@ replacements:
   #     s/end\{tabu}/end{tabular}/s;
   #
   # - substitution: |-
-  #     s/(:?\\cellcolor\{.*?}\{?)?\\textcolor\{.*?}\{(:?\\textbf\{)?(.*?)}}?}?/$3/sg;
+  #     s/(?:\\cellcolor\{.*?}\{?)?\\textcolor\{.*?}\{(?:\\textbf\{)?(.*?)}}?}?/$3/sg;
 
   # - substitution: |-
   #     s/(\\includegraphics.*?)\{\{(.*?)}(\.\w+)?}/$1{$2$3}/g
@@ -530,7 +533,7 @@ replacements:
   #
   # - substitution: |-
   #     s/\s+(\\label\{.*?})/$1/sg;
-  #
+
   # - substitution: |-
   #     s/(\\label\{.*?})\s*\\label\{.*?}/$1/sg
 
@@ -544,6 +547,21 @@ replacements:
 
   # - substitution: |-
   #     s/\\hyperref\[(.*?)]\{(.*?(\\ref\{(.*?)})?|Atividade.*?)}/\\cref{$1}/sgx;
+
+  # - substitution: |-
+  #     s/(?:(?:C|c)apítulo|(?:F|f)igura|(?:T|t)abela|(?:A|a)pêndice|(?:E|e)q(?:uação|.)?)s(?:\s*|\~)\\ref\{(.*?)},
+  #       \s*\\ref{(.*?)},\s*\\ref{(.*?)},\s*\\ref{(.*?)},\s*\\ref{(.*?)}
+  #       \s*e\s*\\ref\{(.*?)}/\\cref\{$1,$2,$3,$4,$5,$6}
+  #     /sgx
+
+  # - substitution: |-
+  #     s/(?:(?:C|c)apítulo|(?:F|f)igura|(?:T|t)abela|(?:A|a)pêndice|(?:E|e)qs?(?:uação|.)?)s(?:\s*|\~)\\(?:eq)?ref\{(.*?)}\s*e\s*\\(?:eq)?ref\{(.*?)}/\\cref\{$1,$2}/sgx
+  #
+  # - substitution: |-
+  #     s/(?:(?:C|c)apítulo|(?:F|f)igura|(?:T|t)abela|(?:A|a)pêndice|(?:E|e)qs?(?:uação|.)?)s?(?:\s*|\~)\\(?:eq)?ref\{(.*?)}/\\cref\{$1}/sgx
+  #
+  # - substitution: |-
+  #     s/\\cref\{(.*?)}\s*e\s*\\(?:eq)?ref\{(.*?)}/\\cref\{$1,$2}/sg
 
   # - substitution: |-
   #     s/(\\begin\{enumerate})\s*\\setcounter\{enumi}\{\d+}/$1\[resume\]/s
